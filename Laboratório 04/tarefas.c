@@ -3,7 +3,7 @@
 #include "cmsis_os2.h" // CMSIS-RTOS
 
 
-osThreadId_t BlinkLED_id;
+osThreadId_t BlinkLED1_id, BlinkLED2_id, BlinkLED3_id, BlinkLED4_id;
 
 typedef struct{
   uint8_t select;
@@ -44,10 +44,10 @@ void main(void){
   
   osKernelInitialize();
   
-  BlinkLED_id = osThreadNew(BlinkLED, (void*)&ledconfig[0], NULL);
-  BlinkLED_id = osThreadNew(BlinkLED, (void*)&ledconfig[1], NULL);
-  BlinkLED_id = osThreadNew(BlinkLED, (void*)&ledconfig[2], NULL);
-  BlinkLED_id = osThreadNew(BlinkLED, (void*)&ledconfig[3], NULL);
+  BlinkLED1_id = osThreadNew(BlinkLED, (void*)&ledconfig[0], NULL);
+  BlinkLED2_id = osThreadNew(BlinkLED, (void*)&ledconfig[1], NULL);
+  BlinkLED3_id = osThreadNew(BlinkLED, (void*)&ledconfig[2], NULL);
+  BlinkLED4_id = osThreadNew(BlinkLED, (void*)&ledconfig[3], NULL);
 
   if(osKernelGetState() == osKernelReady)
     osKernelStart();
